@@ -6,27 +6,27 @@ You edit a .sdot file, whenever you save the file, **sed** will be called on tha
 
 
 ## Requirements
-	- graphviz 
-	- inotify-tools 
+- graphviz 
+- inotify-tools 
 
 ## Installation
-	simply enough, just run:
-	>sudo make
+simply enough, just run:
+	> sudo make
 
 ## Configuration
-	Edit the files in /etc/vimsdot/
-	You can change the editor to use emacs, nano or whatever else you like
-	AWK or the like can be used instead of sed, but it might need a little tweaking...
+Edit the files in /etc/vimsdot/
+You can change the editor to use emacs, nano or whatever else you like
+AWK or the like can be used instead of sed, but it might need a little tweaking...
 
 ## Usage 
-	>vimsdot [{GV-FILE | SDOT-FILE}] [SEDSCRIPT] [DOTCMD]
-	where:
-	- GV-FILE is the graphviz file
-	- SDOT-FILE is the GV-FILE with a .sdot extension
-	- SEDSCRIPT is the sed script 
-	- DOTCMD can be dot, neato, fdp... 
+	> vimsdot [{GV-FILE | SDOT-FILE}] [SEDSCRIPT] [DOTCMD]
+where:
+- GV-FILE is the graphviz file
+- SDOT-FILE is the GV-FILE with a .sdot extension
+- SEDSCRIPT is the sed script 
+- DOTCMD can be dot, neato, fdp... 
 	
-	the arguments are optional and it will be populated with the contents of /etc/vimsdot folder
+the arguments are optional and it will be populated with the contents of /etc/vimsdot folder
 		
 	
 
