@@ -1,0 +1,10 @@
+#configuration file for vimsdot
+
+#Chosen Editor, can be vim, emacs, nano or any editor you choose
+VIMSDOT_EDITOR=vim
+
+#default graphviz command
+DEFAULT_DOTCMD=dot
+
+#default sed command, it's possible to use AWK as well
+SED_CMD="sed -E -f"

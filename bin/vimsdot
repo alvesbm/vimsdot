@@ -1,0 +1,34 @@
+#!/bin/bash -x
+source /etc/vimsdot/conf
+[ $# -ge 1 ] && FNAME=$1 || FNAME=noname.gv
+[ $# -ge 2 ] && SCRIPT=$2 || SCRIPT=script.sed
+[ $# -ge 3 ] && DOTCMD=$3 || DOTCMD=$DEFAULT_DOTCMD
+if [ -z "`echo $FNAME | grep -G '\.sdot$'`" ]
+then
+	SNAME=$FNAME.sdot
+else
+	SNAME=$FNAME
+	FNAME=`echo $SNAME | sed s/\.sdot//g`
+fi	
+[ -f "$SNAME" ] || cat /etc/vimsdot/gv.default > $SNAME
+[ -f "$FNAME" ] || touch $FNAME
+[ -f "$SCRIPT" ] || cat /etc/vimsdot/script.default > $SCRIPT
+$SED_CMD $SCRIPT $SNAME > $FNAME
+$DOTCMD -Txlib $FNAME &
+dotpid=$!
+while true
+do
+	if ! kill -0 $dotpid; then
+		$DOTCMD -Txlib $FNAME &
+		dotpid=$!
+	fi
+	$SED_CMD $SCRIPT $SNAME > $FNAME
+	inotifywait -q -q -e modify $SNAME $SCRIPT
+done &
+checkpid=$!
+$VIMSDOT_EDITOR $SNAME
+kill $checkpid
+kill $dotpid
+
+
+

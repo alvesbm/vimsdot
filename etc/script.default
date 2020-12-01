@@ -1,0 +1,18 @@
+# Default sed script
+s/ *\t*(.*) has a (.*)/\2 -> \1 [arrowhead="vee"]/g
+s/ *\t*(.*) has many (.*)/\2 -> \1 [arrowhead="icurve"]/g
+s/ *\t*(.*) is a (.*)/\1 -> \2 [arrowhead="onormal"]/g
+s/ *\t*(.*) implements (.*)/\1 -> \2 [arrowhead="onormal"]/g
+:breakarray
+s/MARKIN([^ ]*)MARKOUT/\1/g
+t breakarray
+s/MARKIN(.*) \|MARKOUT\\n/MARKIN\1MARKOUT|/g
+t breakarray
+s/MARKIN(.*) (.*)MARKOUT/MARKIN\1MARKOUT\\n\2/g
+t breakarray
+s/\t* *Class (.*) with (.*)/\1 [shape=record,style=solid,label="{\1|MARKIN\2MARKOUT}"]/g
+t breakarray
+s/\t* *Interface (.*) with (.*)/\1 [shape=record,style=dashed,label="{\1|MARKIN\2MARKOUT}"]/g
+t breakarray
+s/\t* *Class (.*)/\1 [shape=record,style=solid,label="{\1|...}"]/g
+
