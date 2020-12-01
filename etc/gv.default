@@ -5,14 +5,12 @@ digraph G {
 
 
 	//Classes
-	Class Class with +method()
+	Class MyClass with +method()
 	Class Another with +methodA() +methodB() | size counter ...
-	Class MsgBook 
-	Interface Observable with +notify()
+	Interface Intera with +notify()
 
 	// diagram
-	SerialFacade has a MsgBook
-	SerialFacade has a RingBuffer
-	RingBuffer implements Observable
+	MyClass has a Another
+	Another implements Intera
 
 }
