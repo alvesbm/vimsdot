@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 source /etc/vimsdot/conf
 [ $# -ge 1 ] && FNAME=$1 || FNAME=noname.gv
 [ $# -ge 2 ] && SCRIPT=$2 || SCRIPT=script.sed
