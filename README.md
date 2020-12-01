@@ -4,6 +4,7 @@ This is a tool that allows the usage of custom commands on graphviz. In the same
 It is a very simple tool, made only with shellscripts.
 You edit a .sdot file, whenever you save the file, **sed** will be called on that file, and translate your custom commands into the right graphviz syntax.
 
+
 ## Requirements
 	- graphviz 
 	- inotify-tools 
@@ -13,7 +14,9 @@ You edit a .sdot file, whenever you save the file, **sed** will be called on tha
 	>sudo make
 
 ## Configuration
-	Edit the file in /etc/
+	Edit the files in /etc/vimsdot/
+	You can change the editor to use emacs, nano or whatever else you like
+	AWK or the like can be used instead of sed, but it might need a little tweaking...
 
 ## Usage 
 	>vimsdot [{GV-FILE | SDOT-FILE}] [SEDSCRIPT] [DOTCMD]
